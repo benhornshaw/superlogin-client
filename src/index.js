@@ -526,6 +526,19 @@ class Superlogin extends EventEmitter2 {
 		}
 		return Promise.reject({ error: 'Authentication required' });
 	}
+	
+
+	changeProfile(profile) {
+		if (this.authenticated()) {
+			return this._http.post(`${this._config.baseUrl}/change-profile`, { profile })
+				.then(res => res.data)
+				.catch(err => {
+					throw parseError(err);
+				});
+		}
+		return Promise.reject({ error: 'Authentication required' });
+	}
+
 
 	validateUsername(username) {
 		return this._http.get(`${this._config.baseUrl}/validate-username/${encodeURIComponent(username)}`)
