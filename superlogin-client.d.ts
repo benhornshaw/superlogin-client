@@ -61,6 +61,7 @@ export interface SuperLoginClient extends EventEmitter2 {
 	resetPassword: (reset: { password: string, confirmPassword: string, token: string }) => Promise<any>;
 	changePassword: (change: { currentPassword?: string, newPassword: string, confirmPassword: string, token: string }) => Promise<any>;
 	changeEmail: (email: string) => Promise<any>;
+	changeProfile: (profile: any) => Promise<any>;
 	validateUsername: (username: string) => Promise<any>;
 	validateEmail: (email: string) => Promise<any>;
 	getHttp: () => AxiosInstance;
